@@ -1,15 +1,19 @@
 package com.example.movie.models.dto;
 
+import com.example.movie.models.enums.Genre;
+
 import java.time.LocalDate;
 import java.util.List;
 
-public class MovieRequest {
+public class MovieRequestDTO {
     private String title;
     private String description;
     private LocalDate releaseDate;
     private Integer durationMinutes;
     private Double rating;
-    private List<ShowTimeRequest> showTimes;
+    private List<ShowtimeDTO> showTimes;
+    private Integer duration;
+    private Genre genre; // Or Genre enum
 
     public String getTitle() {
         return title;
@@ -51,12 +55,28 @@ public class MovieRequest {
         this.rating = rating;
     }
 
-    public List<ShowTimeRequest> getShowTimes() {
+    public List<ShowtimeDTO> getShowTimes() {
         return showTimes;
     }
 
-    public void setShowTimes(List<ShowTimeRequest> showTimes) {
+    public void setShowTimes(List<ShowtimeDTO> showTimes) {
         this.showTimes = showTimes;
+    }
+
+    public Integer getDuration() {
+        return duration;
+    }
+
+    public void setDuration(Integer duration) {
+        this.duration = duration;
+    }
+
+    public Genre getGenre() {
+        return genre;
+    }
+
+    public void setGenre(Genre genre) {
+        this.genre = genre;
     }
 }
 

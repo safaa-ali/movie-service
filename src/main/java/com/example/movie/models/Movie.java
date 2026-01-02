@@ -1,6 +1,7 @@
 package com.example.movie.models;
 
 
+import com.example.movie.models.enums.Genre;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
@@ -26,6 +27,8 @@ public class Movie {
 
     @Column(nullable = false)
     private Integer durationMinutes;
+    @Enumerated(EnumType.STRING) // ✅ IMPORTANT
+    private Genre genre;
 
     @Column
     private Double rating;
@@ -33,6 +36,7 @@ public class Movie {
     private String trailerPath;
 
     @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL, orphanRemoval = true)
+
     @JsonManagedReference
     private List<Showtime> showTimes = new ArrayList<>();
 
@@ -113,8 +117,17 @@ public class Movie {
     }
 
     public void addShowtime(Showtime showtime) {
+
         showTimes.add(showtime);
         showtime.setMovie(this); // Important: sets the foreign key
+    }
+
+    public Genre getGenre() {
+        return genre;
+    }
+
+    public void setGenre(Genre genre) {
+        this.genre = genre;
     }
 }
 

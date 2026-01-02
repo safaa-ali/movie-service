@@ -1,6 +1,6 @@
 package com.example.movie.models.dto;
 
-public class ShowTimeRequest{
+public class ShowtimeDTO{
     private String showTime; // e.g., "21:00"
 
     public String getShowTime() {
